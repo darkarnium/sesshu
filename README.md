@@ -62,3 +62,9 @@ Installation and configuration of a new module can be performed in the following
 Result data should be output in a format that is serializable into JSON. A Python native `dict` or `list` is preferable here, if possible.
 
 Module result data should *NOT* be serialized into JSON inside of the module, as results are added into a response document which contains both the target, and the module from which the data was generated. The response document itself will be serialized into JSON when the results are dispatched.
+
+## Additional Reading
+
+A basic Chef environment cookbook for deploying and configuring Sesshu can be found at the following URL:
+
+* https://www.github.com/darkarnium/sesshu-env/
