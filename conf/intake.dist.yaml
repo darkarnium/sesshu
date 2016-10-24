@@ -1,0 +1,18 @@
+---
+logging:
+  name: 'sesshu'
+  path: 'PATH'
+
+plugin:
+  - 'http_robots'
+  - 'http_javascript'
+  - 'http_stylesheet'
+
+workers:
+  count: 4
+
+bus:
+  input:
+    queue: 'URL'
+  output:
+    topic: 'ARN'

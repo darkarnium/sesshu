@@ -1,0 +1,5 @@
+beautifulsoup4==4.5.1
+click==6.6
+boto3==1.4.1
+requests==2.11.1
+cerberus==1.0.1
