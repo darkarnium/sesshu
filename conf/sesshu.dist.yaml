@@ -12,6 +12,7 @@ workers:
   count: 4
 
 bus:
+  region: 'us-west-2'
   input:
     queue: 'URL'
   output:

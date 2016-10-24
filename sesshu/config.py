@@ -22,6 +22,7 @@ SCHEMA = {
     'bus': {
         'type': 'dict',
         'schema': {
+            'region': {'type': 'string'},
             'input': {
                 'type': 'dict',
                 'schema': {
