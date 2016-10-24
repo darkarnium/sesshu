@@ -16,7 +16,7 @@ def validate(uri):
 
 
 def fetch(uri):
-    ''' Attempts to fetch a list of Javascript includes from the target. '''
+    ''' Attempts to fetch a list of CSS includes from the target. '''
     try:
         response = requests.get(
             uri,
@@ -35,10 +35,19 @@ def fetch(uri):
     soup = bs4.BeautifulSoup(response.text, 'html.parser')
     sources = []
 
-    # Locate all 'script' tags which have 'src' attributes, and store.
-    for script in soup.find_all('script'):
-        source = script.get('src')
-        if source is not None:
+    # Locate all 'link' tags which have a valid relationship attribute.
+    for link in soup.find_all('link'):
+        relationship = link.get('rel')
+        if relationship is None:
+            continue
+
+        # Ensure link has a relationship of 'stylesheet', and a valid 'href'.
+        if relationship[0].lower() == 'stylesheet':
+            source = link.get('href')
+            if source is None:
+                continue
+
+            # Store.
             sources.append(source)
 
     return sources
