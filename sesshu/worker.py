@@ -16,8 +16,8 @@ def run(configuration):
     config.validate(configuration)
 
     log = logging.getLogger(configuration['logging']['name'])
-    sqs = boto3.client('sqs')
-    sns = boto3.client('sns')
+    sqs = boto3.client('sqs', region_name=configuration['bus']['region'])
+    sns = boto3.client('sns', region_name=configuration['bus']['region'])
 
     # Poll until the heat death of the universe.
     log.info(
