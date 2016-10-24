@@ -34,6 +34,40 @@ SNS and SQS are used for request and response distribution.
 
 The configuration of a re-drive policy and a dead-letter queue after a sane number of retries is recommended for handling messages that are rejected by the worker(s). This is in order to safely remove malformed messages out of the queue with a minimal number of re-fetches.
 
+### AWS Instance Profiles
+
+The following IAM Policy can be used as an example when constructing policies to permit Sesshu worker nodes access to the AWS SQS and SNS resources required to fetch work and publish results:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Stmt1477288394000",
+            "Effect": "Allow",
+            "Action": [
+                "sqs:DeleteMessage",
+                "sqs:GetQueueUrl",
+                "sqs:ReceiveMessage"
+            ],
+            "Resource": [
+                "arn:aws:sqs:REGION:ACCOUNT:QUEUE"
+            ]
+        },
+        {
+            "Sid": "Stmt1477288666000",
+            "Effect": "Allow",
+            "Action": [
+                "sns:Publish"
+            ],
+            "Resource": [
+                "arn:aws:sns:REGION:ACCOUNT:SNS-TOPIC"
+            ]
+        }
+    ]
+}
+```
+
 ## Modules
 
 Simply put, modules provide data collection for a given target. These modules are invoked by Sesshu when a valid `request` message is retrieved from the input message queue.
