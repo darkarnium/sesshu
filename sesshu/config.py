@@ -21,7 +21,7 @@ SCHEMA = {
                 'schema': {
                     'interval': {'type': 'integer', 'min': 1, 'max': 20}
                 }
-            }
+            },
             'count': {'type': 'integer', 'min': 1}
         }
     },
