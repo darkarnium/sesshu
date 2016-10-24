@@ -53,9 +53,9 @@ If this is a concern - which it should be if accepting URLs from users - securit
 Installation and configuration of a new module can be performed in the following manner:
 
 1. Install required Python dependencies for the new module.
-2. Install the module file into the `sesshu/modules/` directory.
+2. Install the module file into the `sesshu/plugin/` directory.
 3. Add the module into `sesshu.plugin` as an import inside of `__init__`.
-4. Add the new module into the Sesshu configuration - under the `modules` section.
+4. Add the new module into the Sesshu configuration - under the `plugin` section.
 
 ### Results.
 
