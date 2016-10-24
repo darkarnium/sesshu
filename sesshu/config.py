@@ -16,6 +16,12 @@ SCHEMA = {
     'workers': {
         'type': 'dict',
         'schema': {
+            'polling': {
+                'type': 'dict',
+                'schema': {
+                    'interval': {'type': 'integer', 'min': 1, 'max': 20}
+                }
+            }
             'count': {'type': 'integer', 'min': 1}
         }
     },

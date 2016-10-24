@@ -9,6 +9,8 @@ plugin:
   - 'http_stylesheet'
 
 workers:
+  polling:
+    interval: 20
   count: 4
 
 bus:
